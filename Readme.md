@@ -1,9 +1,9 @@
-Geektastic Codetest Built upon Silex API Template
+Codetest Boilerplate Built upon Silex API Template
 ===
 
 Modified the starting point from [https://github.com/arnaudbaali/silex-docker-php7]. Incoroporates DBAL and phpunit.
 
-This is a Silex project running with Docker, utilising docker-compose.
+This is a Silex project running with Docker, utilising docker-compose that I use for small proof of concept apis and codetests ( when using PHP)
 
 # Requirements
 

@@ -1,5 +1,5 @@
 {
-    "name": "fabpot/silex-skeleton",
+    "name": "daveashenden/silex-docker-boilerplate",
     "description": "A pre-configured skeleton for the Silex microframework",
     "license": "MIT",
     "type": "project",
