@@ -17,9 +17,11 @@ This is a Silex project running with Docker, utilising docker-compose that I use
 
 ## 2. Install Silex dependencies via Composer
 
-`docker-compose up -d `
-`docker exec codetest_db bash /tmp/init_db.sh`
-`docker run --rm -v $(pwd):/app composer/composer install`
+- `docker-compose up -d `
+
+- `docker exec codetest_db bash /tmp/init_db.sh`
+
+- `docker run --rm -v $(pwd):/app composer/composer install`
 
 Here we are using a Composer via Docker to reduce requirements on your machine.
 
