@@ -1,0 +1,55 @@
+version: '2'
+networks:
+  backend:
+
+services:
+
+  php:
+    image: php:7-fpm
+    container_name: codetest_php
+    expose:
+      - "9000"
+    links:
+        - db
+    volumes:
+      - ./:/var/www/silex
+    networks:
+      backend:
+        aliases:
+          - php
+  nginx:
+    container_name: codetest_nginx
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    links:
+      - php
+    volumes:
+      - ./docker/nginx/silex.conf:/etc/nginx/conf.d/default.conf
+    volumes_from:
+      - php
+    networks:
+      backend:
+
+  db:
+    container_name: codetest_db
+    image: mariadb:10.1.13
+    volumes:
+      - ./docker/init/db.sql:/tmp/db.sql
+      - ./docker/init/init_db.sh:/tmp/import.sh
+    volumes_from:
+      - dbdata
+    ports:
+      - 8001:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=codetest
+      - MYSQL_DATABASE=codetest
+      - MYSQL_USER=codetest
+      - MYSQL_PASSWORD=codetest
+
+  dbdata:
+    container_name: codetest_dbdata
+    image: tianon/true
+    volumes:
+  #    - ./mysql:/var/lib/mysql
+      - /var/lib/mysql
